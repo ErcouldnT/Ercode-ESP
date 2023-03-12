@@ -14,7 +14,8 @@ from pyglet.text import Label
 # True=Enabled & False=Disabled for each relevant config items
 CONFIG = {
     "CREWS_ENABLED": True,
-    "SHIPS_ENABLED": True
+    "SHIPS_ENABLED": True,
+    # "SKELETON_SHIPS_ENABLED": True
 }
 
 # Used to track unique crews
