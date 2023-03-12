@@ -3,30 +3,7 @@
 @Source https://github.com/DougTheDruid/SoT-ESP-Framework
 """
 
-
-ships = {
-    # ------------ SHIPS / AI SHIPS ------------
-    "BP_SmallShipTemplate_C": {
-        "Name": "Sloop (Near)",
-    },
-    "BP_SmallShipNetProxy_C": {
-        "Name": "Sloop",
-    },
-
-    "BP_MediumShipTemplate_C": {
-        "Name": "Brig (Near)",
-    },
-    "BP_MediumShipNetProxy_C": {
-        "Name": "Brig",
-    },
-
-    "BP_LargeShipTemplate_C": {
-        "Name": "Galleon (Near)",
-    },
-    "BP_LargeShipNetProxy_C": {
-        "Name": "Galleon",
-    },
-
+ai_ships = {
     "BP_AISmallShipTemplate_C": {
         "Name": "Skeleton Sloop (Near)",
     },
@@ -44,4 +21,29 @@ ships = {
     # },  # To implement, must modify ship.py's update method for visibility
 }
 
+ships = {
+    # ------------ SHIPS / AI SHIPS ------------
+    "BP_SmallShipTemplate_C": {
+        "Name": "Sloop (Yakın)",
+    },
+    "BP_SmallShipNetProxy_C": {
+        "Name": "Sloop",
+    },
+
+    "BP_MediumShipTemplate_C": {
+        "Name": "Brig (Yakın)",
+    },
+    "BP_MediumShipNetProxy_C": {
+        "Name": "Brig",
+    },
+
+    "BP_LargeShipTemplate_C": {
+        "Name": "Galleon (Yakın)",
+    },
+    "BP_LargeShipNetProxy_C": {
+        "Name": "Galleon",
+    },
+}
+
 ship_keys = set(ships.keys())
+ai_ship_keys = set(ai_ships.keys())

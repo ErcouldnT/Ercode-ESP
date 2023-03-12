@@ -130,10 +130,10 @@ class Ship(DisplayObject):
         if self.screen_coords:
             # Ships have two actors dependant on distance. This switches them
             # seamlessly at 1750m
-            if "Near" in self.name and new_distance > 1750:
+            if "Yakın" in self.name and new_distance > 1750:
                 self.text_render.visible = False
                 self.icon.visible = False
-            elif "Near" not in self.name and new_distance < 1750:
+            elif "Yakın" not in self.name and new_distance < 1750:
                 self.text_render.visible = False
                 self.icon.visible = False
             else:

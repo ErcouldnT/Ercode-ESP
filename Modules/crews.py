@@ -56,10 +56,11 @@ class Crews(DisplayObject):
         """
         output = ""
         for x, _ in enumerate(self.crew_info):  # x = crew number, _ = crew info
+            # print(_)
             # We store all of the crews in a tracker dictionary. This allows us
             # to assign each crew a "Short"-ID based on count on the server.
             short_id = crew_tracker.get(self.crew_info[x]['guid'], None)
-            output += f" Crew #{short_id} - {self.crew_info[x]['size']} Pirates\n"
+            output += f"Gemi #{short_id} - {self.crew_info[x]['size']} Oyuncu\n"
 
         return output
 
@@ -91,6 +92,7 @@ class Crews(DisplayObject):
 
             # Players<Array>, current length, max length
             crew = struct.unpack("<Qii", crew_raw)
+            # print(crew)
 
             # If our crew is >0 people on it, we care about it, so we add it to our tracker
             if crew[1] > 0:
@@ -101,9 +103,10 @@ class Crews(DisplayObject):
                 crews_data.append(crew_data)
                 if crew_guid not in crew_tracker:
                     crew_tracker[crew_guid] = len(crew_tracker)+1
+        # print(crews_data)
         return crews_data
 
-    def update(self, my_coords):  # pylint: disable=unused-argument
+    def update(self, my_coords):
         """
         A generic method to update all the interesting data about the
         crews on our server. To be called when seeking to perform an update on

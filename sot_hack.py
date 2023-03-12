@@ -192,7 +192,7 @@ class SoTMemoryReader:
             if CONFIG.get('SHIPS_ENABLED') and raw_name in ship_keys:
                 ship = Ship(self.rm, actor_id, actor_address, self.my_coords,
                             raw_name)
-                # if "Near" not in ship.name and ship.distance < 1720:
+                # if "Yakın" not in ship.name and ship.distance < 1720:
                 #     continue
                 # else:
                 self.display_objects.append(ship)
