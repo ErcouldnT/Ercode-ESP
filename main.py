@@ -56,7 +56,7 @@ def load_graphics(_):
 
 
 if __name__ == '__main__':
-    logger.info(base64.b64decode("RG91Z1RoZURydWlkJ3MgRVNQIEZyYW1ld29yayBTdGFydGluZw==").decode("utf-8"))
+    logger.info(base64.b64decode("RXJrdXQncyBFU1AgQUNUSVZBVEVE").decode("utf-8"))
     logger.info(f"Hack Version: {version}")
 
     # Initialize our SoT Hack object, and do a first run of reading actors
@@ -76,7 +76,7 @@ if __name__ == '__main__':
     # Create an overlay window with Pyglet at the same size as our SoT Window
     window = pyglet.window.Window(SOT_WINDOW_W, SOT_WINDOW_H,
                                   vsync=False, style='overlay', config=config,
-                                  caption="DougTheDruid's ESP Framework")
+                                  caption="Erkut's ESP")
     hwnd = window._hwnd  # pylint: disable=protected-access
 
     # Move our window to the same location that our SoT Window is at
@@ -92,7 +92,7 @@ if __name__ == '__main__':
         window.clear()
 
         # Update our player count Label & crew list
-        player_count.text = f"Player Count: {smr.crew_data.total_players}"
+        player_count.text = f"Online: {smr.crew_data.total_players}"
         # crew_list.text = smr.crew_data.crew_str
 
         # Draw our main batch & FPS counter at the bottom left
@@ -116,13 +116,13 @@ if __name__ == '__main__':
 
     # Our base player_count label in the top-right of our screen. Updated
     # in on_draw()
-    player_count = Label("Player Count: {}",
+    player_count = Label("Online: {}",
                          x=SOT_WINDOW_W * 0.85,
                          y=SOT_WINDOW_H * 0.9, batch=main_batch)
 
     # The label for showing all players on the server under the count
     # This purely INITIALIZES it does not inherently update automatically
-    if False:  # pylint: disable=using-constant-test
+    if True:  # pylint: disable=using-constant-test
         crew_list = Label(f"{smr.crew_data.crew_str}", x=SOT_WINDOW_W * 0.85,
                           y=(SOT_WINDOW_H-25) * 0.9, batch=main_batch, width=300,
                           multiline=True)

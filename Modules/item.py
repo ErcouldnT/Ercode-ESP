@@ -8,16 +8,16 @@ from pyglet.shapes import Circle
 from pyglet.graphics import Group
 from helpers import calculate_distance, object_to_screen, main_batch, \
      TEXT_OFFSET_X, TEXT_OFFSET_Y
-from mapping import ships
+from mapping import items
 from Modules.display_object import DisplayObject
 
-SHIP_COLOR = (100, 0, 0)  # The color we want the indicator circle to be
-CIRCLE_SIZE = 10  # The size of the indicator circle we want
+ITEM_COLOR = (0, 100, 0)  # The color we want the indicator circle to be
+CIRCLE_SIZE = 5  # The size of the indicator circle we want
 
 
-class Ship(DisplayObject):
+class Item(DisplayObject):
     """
-    Class to generate information for a ship object in memory
+    Class to generate information for a Item object in memory
     """
 
     def __init__(self, memory_reader, actor_id, address, my_coords, raw_name):
@@ -30,7 +30,7 @@ class Ship(DisplayObject):
         "raw" name to a more readable name per our Mappings. We also create
         a circle and label and add it to our batch for display to the screen.
 
-        All of this data represents a "Ship". If you want to add more, you will
+        All of this data represents a "Item". If you want to add more, you will
         need to add another class variable under __init__ and in the update()
         function
 
@@ -48,8 +48,8 @@ class Ship(DisplayObject):
         self.my_coords = my_coords
         self.raw_name = raw_name
 
-        # Generate our Ship's info
-        self.name = ships.get(self.raw_name).get("Name")
+        # Generate our Item's info
+        self.name = items.get(self.raw_name).get("Name")
         self.coords = self._coord_builder(self.actor_root_comp_ptr,
                                           self.coord_offset)
         self.distance = calculate_distance(self.coords, self.my_coords)
@@ -57,7 +57,7 @@ class Ship(DisplayObject):
         self.screen_coords = object_to_screen(self.my_coords, self.coords)
 
         # All of our actual display information & rendering
-        self.color = SHIP_COLOR
+        self.color = ITEM_COLOR
         self.group = Group()
         self.text_str = self._built_text_string()
         self.text_render = self._build_text_render()
@@ -95,7 +95,7 @@ class Ship(DisplayObject):
         Assigns the object to our batch & group
 
         :rtype: Label
-        :return: What text we want displayed next to the ship
+        :return: What text we want displayed next to the Item
         """
         if self.screen_coords:
             return Label(self.text_str,
@@ -108,7 +108,7 @@ class Ship(DisplayObject):
 
     def update(self, my_coords: dict):
         """
-        A generic method to update all the interesting data about a ship
+        A generic method to update all the interesting data about a Item
         object, to be called when seeking to perform an update on the
         Actor without doing a full-scan of all actors in the game.
 
@@ -133,29 +133,7 @@ class Ship(DisplayObject):
         self.screen_coords = object_to_screen(self.my_coords, self.coords)
 
         if self.screen_coords:
-            # Ships have two actors dependant on distance. This switches them
-            # seamlessly at 1050m
-            if "Yakın" in self.name and new_distance > 1050:
-                self.group.visible = False
-            # Çok yakın gemilerde gösterme (25m)
-            elif "Yakın" in self.name and new_distance < 25:
-                self.group.visible = False
-            elif "Reaper" in self.name and new_distance < 25:
-                self.group.visible = False
-            elif "Adam" in self.name and new_distance < 5:
-                self.group.visible = False
-            # elif "Yakın Brig" in self.name and new_distance > 1050:
-            #     self.group.visible = False
-            # elif "Yakın Galleon" in self.name and new_distance > 1050:
-            #     self.group.visible = False
-            # elif "Yakın Sloop" not in self.name and new_distance < 1750:
-            #     self.group.visible = False
-            # elif "Yakın Brig" not in self.name and new_distance < 1750:
-            #     self.group.visible = False
-            # elif "Yakın Galleon" not in self.name and new_distance < 1750:
-            #     self.group.visible = False
-            else:
-                self.group.visible = True
+            self.group.visible = True
 
             # Update the position of our circle and text
             self.icon.x = self.screen_coords[0]

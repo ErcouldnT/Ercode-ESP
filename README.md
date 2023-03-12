@@ -167,7 +167,7 @@ Potential fix in `main.py`:
    ```python
     window = pyglet.window.Window(SOT_WINDOW_W-20, SOT_WINDOW_H-10,
                                   vsync=False, style='overlay',
-                                  caption="DougTheDruid's ESP Framework")
+                                  caption="Erkut's ESP")
     # window.set_caption('A different caption')
     hwnd = window._hwnd  # pylint: disable=protected-access
 

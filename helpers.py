@@ -14,7 +14,8 @@ from pyglet.text import Label
 # True=Enabled & False=Disabled for each of the config items
 CONFIG = {
     "CREWS_ENABLED": True,
-    "SHIPS_ENABLED": False
+    "SHIPS_ENABLED": True,
+    "ITEMS_ENABLED": True,
 }
 
 # Used to track unique crews
@@ -23,7 +24,7 @@ crew_tracker = {}
 version = "1.3.0"
 
 # Config specification for logging file
-logging.basicConfig(filename='DougsESP.log', level=logging.DEBUG,
+logging.basicConfig(filename='SO-ErkuT.log', level=logging.DEBUG,
                     format='%(asctime)s %(levelname)s %(message)s', filemode="w")
 logger = logging.getLogger()
 
@@ -177,6 +178,6 @@ def calculate_distance(obj_to: dict, obj_from: dict) -> int:
                          (obj_to.get("z") - obj_from.get("z")) ** 2))
 
 
-b_label = Label(base64.b64decode('RG91Z1RoZURydWlkJ3MgRVNQIEZyYW1ld29yaw==').decode("utf-8"),
+b_label = Label(base64.b64decode('RXJrdXQncyBFU1A=').decode("utf-8"),
                 x=SOT_WINDOW_W - 537, y=10, font_size=24, bold=True,
                 color=(127, 127, 127, 65), batch=main_batch)
