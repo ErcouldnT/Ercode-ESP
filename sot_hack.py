@@ -7,9 +7,10 @@ For community support, please contact me on Discord: DougTheDruid#2784
 import struct
 import logging
 from memory_helper import ReadMemory
-from mapping import ship_keys
+from mapping import ship_keys, pirate_keys
 from helpers import OFFSETS, CONFIG, logger
 from Modules.ship import Ship
+from Modules.pirate import Pirate
 from Modules.crews import Crews
 
 
@@ -196,6 +197,10 @@ class SoTMemoryReader:
                 #     continue
                 # else:
                 self.display_objects.append(ship)
+            elif CONFIG.get('PIRATES_ENABLED') and raw_name in pirate_keys:
+                pirate = Pirate(self.rm, actor_id, actor_address, self.my_coords,
+                            raw_name)
+                self.display_objects.append(pirate)
 
             # If we have the crews data enabled in helpers.py and the name
             # of the actor is CrewService, we create a class based on that Crew

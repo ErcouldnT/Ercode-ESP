@@ -39,11 +39,17 @@ ships = {
     "BP_AILargeShipNetProxy_C": {
         "Name": "Skeleton Galleon",
     },
-    
+
     # "BP_AggressiveGhostShip_C": {
     #     "Name": "Flameheart Galleon",
     # },  # To implement, must modify ship.py's update method for visibility
 }
 
+pirates = {
+    "BP_PlayerPirate_C": {
+        "Name":  "Pirate",
+    },
+}
+
 ship_keys = set(ships.keys())
-# skeleton_ship_keys = set(skeleton_ships.keys())
+pirate_keys = set(pirates.keys())
