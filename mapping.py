@@ -51,5 +51,18 @@ pirates = {
     },
 }
 
+waters = {
+    "BP_SmallShip_StandardHull_InternalShipWater_C": {
+        "name": "Sloop Water",
+    },
+    "BP_MediumShip_StandardHull_InternalShipWater_C": {
+        "name": "Brig Water",
+    },
+    "BP_LargeShip_StandardHull_InternalShipWater_C": {
+        "name": "Galleon Water",
+    },
+}
+
 ship_keys = set(ships.keys())
 pirate_keys = set(pirates.keys())
+water_keys = set(waters.keys())

@@ -3,6 +3,7 @@
 @Source https://github.com/DougTheDruid/SoT-ESP-Framework
 """
 
+import math
 import struct
 import abc
 from helpers import OFFSETS
@@ -49,6 +50,22 @@ class DisplayObject(metaclass=abc.ABCMeta):
         return self.rm.read_ptr(
             address + OFFSETS.get("Actor.rootComponent")
         )
+    
+    def _get_water_percentage(self, address: int) -> int:
+        """
+        Function to get an AActor's root component memory address
+        :param int address: the base address for a given AActor
+        :rtype: int
+        :return: the address of an AActors root component
+        """
+        water_amount = self.rm.read_float(
+            address + OFFSETS.get("ShipInternalWater.WaterAmount")
+        )
+        max_water_amount = self.rm.read_float(
+            address + OFFSETS.get("ShipInternalWater.InternalWaterParams") + OFFSETS.get("ShipInternalWaterParams.MaxWaterAmount")
+        )
+
+        return math.floor(water_amount / max_water_amount * 100)
 
     def _coord_builder(self, root_comp_ptr: int, offset: int) -> dict:
         """
