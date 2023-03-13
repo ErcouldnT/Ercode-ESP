@@ -64,8 +64,37 @@ class DisplayObject(metaclass=abc.ABCMeta):
         max_water_amount = self.rm.read_float(
             address + OFFSETS.get("ShipInternalWater.InternalWaterParams") + OFFSETS.get("ShipInternalWaterParams.MaxWaterAmount")
         )
-
         return math.floor(water_amount / max_water_amount * 100)
+    
+    def _get_health(self, address: int) -> int:
+        """
+        Function to get an AActor's root component memory address
+        :param int address: the base address for a given AActor
+        :rtype: int
+        :return: the address of an AActors root component
+        """
+        health_component = self.rm.read_ptr(
+            address + OFFSETS.get("AthenaCharacter.HealthComponent")
+        )
+        health = self.rm.read_float(
+            health_component + OFFSETS.get("HealthComponent.CurrentHealthInfo")
+        )
+        return math.floor(health)
+    
+    def _get_name(self, address: int) -> str:
+        """
+        Function to get an AActor's root component memory address
+        :param int address: the base address for a given AActor
+        :rtype: int
+        :return: the address of an AActors root component
+        """
+        player_state = self.rm.read_ptr(
+            address + OFFSETS.get("Pawn.PlayerState")
+        )
+        name_location = self.rm.read_ptr(
+            player_state + OFFSETS.get("PlayerState.PlayerName")
+        )
+        return self.rm.read_name_string(name_location)
 
     def _coord_builder(self, root_comp_ptr: int, offset: int) -> dict:
         """

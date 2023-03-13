@@ -16,7 +16,7 @@ CIRCLE_SIZE = 10  # The size of the indicator circle we want
 
 class Pirate(DisplayObject):
     """
-    Class to generate information for a ship object in memory
+    Class to generate information for a player object in memory
     """
 
     def __init__(self, memory_reader, actor_id, address, my_coords, raw_name):
@@ -47,8 +47,11 @@ class Pirate(DisplayObject):
         self.my_coords = my_coords
         self.raw_name = raw_name
 
-        # Generate our Ship's info
-        self.name = pirates.get(self.raw_name).get("Name")
+        # Generate Pirate's info
+        self.name = self._get_name(address)
+        self.health = self._get_health(address)
+        # self.name = pirates.get(self.raw_name).get("Name")
+
         self.coords = self._coord_builder(self.actor_root_comp_ptr,
                                           self.coord_offset)
         self.distance = calculate_distance(self.coords, self.my_coords)
@@ -81,7 +84,7 @@ class Pirate(DisplayObject):
         Generates a string used for rendering. Separate function in the event
         you need to add more data (Sunk %, hole count, etc)
         """
-        return f"{self.name} - {self.distance}m"
+        return f"{self.name} ({self.health}) - {self.distance}m"
 
     def _build_text_render(self) -> Label:
         """
@@ -144,6 +147,7 @@ class Pirate(DisplayObject):
             self.text_render.y = self.screen_coords[1] + TEXT_OFFSET_Y
 
             # Update our text to reflect out new distance
+            self.health = self._get_health(self.address)
             self.distance = new_distance
             self.text_str = self._built_text_string()
             self.text_render.text = self.text_str

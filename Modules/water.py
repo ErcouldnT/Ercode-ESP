@@ -126,8 +126,6 @@ class Water(DisplayObject):
                                           self.coord_offset)
         new_distance = calculate_distance(self.coords, self.my_coords)
 
-        self.water_percentage = self._get_water_percentage(self.address)
-
         self.screen_coords = object_to_screen(self.my_coords, self.coords)
 
         if self.screen_coords:
@@ -145,6 +143,7 @@ class Water(DisplayObject):
             self.text_render.y = self.screen_coords[1] + TEXT_OFFSET_Y
 
             # Update our text to reflect out new distance
+            self.water_percentage = self._get_water_percentage(self.address)
             self.distance = new_distance
             self.text_str = self._built_text_string()
             self.text_render.text = self.text_str
