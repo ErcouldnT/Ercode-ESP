@@ -86,6 +86,8 @@ class Pirate(DisplayObject):
         you need to add more data (Sunk %, hole count, etc)
         """
         # return f"{self.name} ({self.health}) - {self.distance}m"
+        if self.name == "":
+            self.name = "Adam"
         return f"{self.name} - {self.distance}m"
 
     def _build_text_render(self) -> Label:
