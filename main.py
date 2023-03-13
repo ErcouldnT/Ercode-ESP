@@ -60,7 +60,7 @@ def update_graphics(_):
 
 if __name__ == '__main__':
     logger.info(
-        b64decode("RG91Z1RoZURydWlkJ3MgRVNQIEZyYW1ld29yayBTdGFydGluZw==").decode("utf-8")
+        b64decode("RXJrdXQncyBFU1AgQUNUSVZBVEVE").decode("utf-8")
     )
     logger.info(f"Hack Version: {version}")
 
@@ -80,7 +80,7 @@ if __name__ == '__main__':
     # Create an overlay window with Pyglet at the same size as our SoT Window
     window = pyglet.window.Window(SOT_WINDOW_W, SOT_WINDOW_H,
                                   vsync=False, style='overlay', config=config,
-                                  caption="Ercode's ESP Framework")
+                                  caption="Ercode's ESP Hack")
     hwnd = window._hwnd  # pylint: disable=protected-access
 
     # Move our window to the same location that our SoT Window is at
@@ -124,7 +124,7 @@ if __name__ == '__main__':
     # Our base player_count label in the top-right of our screen. Updated
     # in on_draw(). Use a default of "Initializing", which will update once the
     # hack is actually running
-    player_count = Label("...ERCODE ESP IS STARTING...",
+    player_count = Label("***ERCODE ESP IS STARTING***",
                          x=SOT_WINDOW_W * 0.85,
                          y=SOT_WINDOW_H * 0.9, batch=main_batch)
 

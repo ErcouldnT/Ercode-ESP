@@ -41,6 +41,7 @@ class Pirate(DisplayObject):
         # Initialize our super-class
         super().__init__(memory_reader)
 
+        self.rm = memory_reader
         self.actor_id = actor_id
         self.address = address
         self.actor_root_comp_ptr = self._get_root_comp_address(address)
