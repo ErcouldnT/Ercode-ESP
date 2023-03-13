@@ -60,7 +60,10 @@ class Crews(DisplayObject):
             # We store all of the crews in a tracker dictionary. This allows us
             # to assign each crew a "Short"-ID based on count on the server.
             short_id = crew_tracker.get(self.crew_info[x]['guid'], None)
-            output += f"Gemi #{short_id} - {self.crew_info[x]['size']} Oyuncu\n"
+            ship_size = self.crew_info[x]['size']
+            # ship_type = 'Brig' if ship_size == 3 else 'Sloop'
+            # ship_type = 'Galleon' if ship_size == 4 else 'Sloop'
+            output += f"Gemi #{short_id} - {ship_size} Oyuncu\n"
 
         return output
 

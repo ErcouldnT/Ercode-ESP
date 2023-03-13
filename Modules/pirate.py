@@ -49,7 +49,7 @@ class Pirate(DisplayObject):
         self.raw_name = raw_name
 
         # Generate Pirate's info
-        self.name = self._get_name(address)
+        self.name = self._get_name(address) or 'Adam'
         self.health = self._get_health(address)
         # self.name = pirates.get(self.raw_name).get("Name")
 
@@ -86,8 +86,6 @@ class Pirate(DisplayObject):
         you need to add more data (Sunk %, hole count, etc)
         """
         # return f"{self.name} ({self.health}) - {self.distance}m"
-        if self.name == "":
-            self.name = "Adam"
         return f"{self.name} - {self.distance}m"
 
     def _build_text_render(self) -> Label:
