@@ -1,7 +1,10 @@
 # ERCODE PYTHON SOT ESP HACK
 ## EDUCATIONAL PURPOSES ONLY. YOU WILL GET BANNED!
 
-### Todo:
+### NEEDED
+- Python 3.8+
+
+### TODO
 - Ship ESP (Distance, Sunk %, and Type)
 - Player ESP (Distance, HP, Name, and Currently Wielding)
 - Skeleton ESP (Distance, Max HP)
