@@ -130,7 +130,7 @@ class Water(DisplayObject):
         self.screen_coords = object_to_screen(self.my_coords, self.coords)
 
         if self.screen_coords:
-            if new_distance > 1000:
+            if new_distance > 150:
                 self.text_render.visible = False
                 self.icon.visible = False
             else:

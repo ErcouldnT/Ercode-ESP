@@ -85,7 +85,8 @@ class Pirate(DisplayObject):
         Generates a string used for rendering. Separate function in the event
         you need to add more data (Sunk %, hole count, etc)
         """
-        return f"{self.name} ({self.health}) - {self.distance}m"
+        # return f"{self.name} ({self.health}) - {self.distance}m"
+        return f"{self.name} - {self.distance}m"
 
     def _build_text_render(self) -> Label:
         """

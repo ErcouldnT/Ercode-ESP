@@ -79,6 +79,7 @@ class DisplayObject(metaclass=abc.ABCMeta):
         health = self.rm.read_float(
             health_component + OFFSETS.get("HealthComponent.CurrentHealthInfo")
         )
+        # print(health)
         return math.floor(health)
     
     def _get_name(self, address: int) -> str:
