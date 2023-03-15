@@ -18,6 +18,7 @@ CONFIG = {
     "ITEMS_ENABLED": True,
     "PIRATES_ENABLED": True,
     "SUNK_PERCENTAGE_ENABLED": True,
+    "PROJECTILES_ENABLED": True,
 }
 
 # Used to track unique crews

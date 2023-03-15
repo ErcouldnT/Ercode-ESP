@@ -176,7 +176,22 @@ items = {
     },
 }
 
+projectiles = {
+  "BP_Projectile_CannonBall_C": {
+       "Name":  "Top",
+  },
+
+#   "BP_Projectile_SirenTrident_C": {
+#        "Name":  "Siren Trident Projectile",
+#   },
+
+#   "BP_Projectile_SirenSong_C": {
+#        "Name":  "Siren Song Projectile",
+#   }
+}
+
 ship_keys = set(ships.keys())
 pirate_keys = set(pirates.keys())
 water_keys = set(waters.keys())
 item_keys = set(items.keys())
+projectile_keys = set(projectiles.keys())

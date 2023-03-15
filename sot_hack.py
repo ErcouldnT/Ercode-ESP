@@ -7,9 +7,10 @@ For community support, please contact me on Discord: DougTheDruid#2784
 import struct
 import logging
 from memory_helper import ReadMemory
-from mapping import ship_keys, pirate_keys, water_keys, item_keys
+from mapping import ship_keys, pirate_keys, water_keys, item_keys, projectile_keys
 from helpers import OFFSETS, CONFIG, logger
 from Modules.ship import Ship
+from Modules.projectile import Projectile
 from Modules.pirate import Pirate
 from Modules.item import Item
 from Modules.water import Water
@@ -207,6 +208,10 @@ class SoTMemoryReader:
                 item = Item(self.rm, actor_id, actor_address, self.my_coords,
                             raw_name)
                 self.display_objects.append(item)
+            elif CONFIG.get('PROJECTILES_ENABLED') and raw_name in projectile_keys:
+                projectile = Projectile(self.rm, actor_id, actor_address, self.my_coords,
+                        raw_name)
+                self.display_objects.append(projectile)
             elif CONFIG.get('SUNK_PERCENTAGE_ENABLED') and raw_name in water_keys:
                 water = Water(self.rm, actor_id, actor_address, self.my_coords,
                             raw_name)
